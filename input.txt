@@ -1,4 +1,4 @@
-Monstrous Mower Warehouse
+James Store
 Briggs and Stratton
 2015
 AFXH1
@@ -23,8 +23,8 @@ Bush Hog Manufacturing
 2013
 AFXH3
 G
-20
-16
+20.0
+16.0
 Homelite Parts
 10.5
 2
@@ -33,6 +33,7 @@ Ferris Industries
 2003
 AFXH4
 P
-18
+18.0
 25.1
 4
+

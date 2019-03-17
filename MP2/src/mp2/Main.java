@@ -24,6 +24,9 @@ public class Main {
         
         mowerWareHouse.readMowerData(fileName);
         System.out.println(mowerWareHouse);
+        mowerWareHouse.setStoreName("James Store");
+        System.out.println(mowerWareHouse);
+        mowerWareHouse.saveMowerData();
         
     }
     
