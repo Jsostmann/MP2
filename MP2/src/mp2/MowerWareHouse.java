@@ -18,7 +18,7 @@ import java.util.Scanner;
  */
 public class MowerWareHouse {
 
-    private ArrayList<Mower> mowers;
+    private final ArrayList<Mower> mowers;
     private Scanner scan;
     private String storeName;
     private String fName;
@@ -38,10 +38,15 @@ public class MowerWareHouse {
     }
 
     public void readMowerData(String fName) {
+        
         this.fName = fName;
+        
         try {
+            
             scan = new Scanner(new File(fName));
+            
             String storename = scan.nextLine();
+            
             this.storeName = storename;
 
             while (scan.hasNextLine()) {
@@ -89,7 +94,7 @@ public class MowerWareHouse {
         try {
             
             PrintWriter output = new PrintWriter(new File(fName));
-            output.println(this.toString());
+            output.print(this.toString());
             output.close();
             
             

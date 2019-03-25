@@ -10,6 +10,7 @@ package mp2;
  * @author jamesostmann
  */
 public class Engine {
+    
     private String manufacturer;
     private double horsePower;
     private int cylinders;

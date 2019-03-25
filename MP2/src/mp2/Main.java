@@ -5,8 +5,10 @@
  */
 package mp2;
 
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileSystemView;
+
+
+
+
 
 /**
  *
@@ -15,19 +17,29 @@ import javax.swing.filechooser.FileSystemView;
 public class Main {
     
     public static void main(String[] args) {
+      
+        GUI window;
         
-        MowerWareHouse mowerWareHouse = new MowerWareHouse();
         
-        JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView()); 
-        j.showSaveDialog(null);
-        String fileName = j.getSelectedFile().getAbsolutePath();
+      if(args.length > 0) {
+          
+          window = new GUI(args[0]);
+          
+      } else {
+          
+          window = new GUI(null);
+      }
+      
+       
         
-        mowerWareHouse.readMowerData(fileName);
-        System.out.println(mowerWareHouse);
-        mowerWareHouse.setStoreName("James Store");
-        System.out.println(mowerWareHouse);
-        mowerWareHouse.saveMowerData();
+      
+        
+       }
+        
+        
+      
+      
         
     }
     
-}
+
