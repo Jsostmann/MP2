@@ -30,10 +30,6 @@ public class Main {
           window = new GUI(null);
       }
       
-       
-        
-      
-        
        }
         
         

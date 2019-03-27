@@ -23,7 +23,8 @@ import javax.swing.filechooser.FileSystemView;
 public class GUI extends javax.swing.JFrame {
     
     private MowerWareHouse wareHouse;
-  
+    private int saved = 0;
+    
     public GUI(String fileName) {
         
         
@@ -39,8 +40,10 @@ public class GUI extends javax.swing.JFrame {
            JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView());
            j.showOpenDialog(null);
            String file = j.getSelectedFile().getAbsolutePath();
-           wareHouse.readMowerData(file);
+           
       
+           wareHouse.readMowerData(file);
+         
         
         }
         
@@ -107,6 +110,11 @@ public class GUI extends javax.swing.JFrame {
         gasPane = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         tabbedPane.setMaximumSize(new java.awt.Dimension(1000, 1000));
         tabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -360,6 +368,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void saveBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtn3ActionPerformed
              wareHouse.saveMowerData();
+             saved = 1;
     }//GEN-LAST:event_saveBtn3ActionPerformed
 
     private void addPushMowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPushMowerActionPerformed
@@ -382,10 +391,13 @@ public class GUI extends javax.swing.JFrame {
         wareHouse.addMower(t);
         setData(pushMList,'P');
         
+        saved = 0;
+        
     }//GEN-LAST:event_addPushMowerActionPerformed
 
     private void saveBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtn2ActionPerformed
             wareHouse.saveMowerData();
+            saved = 1;
     }//GEN-LAST:event_saveBtn2ActionPerformed
 
     private void addGasPoweredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGasPoweredActionPerformed
@@ -402,7 +414,7 @@ public class GUI extends javax.swing.JFrame {
         String selfPropelled = JOptionPane.showInputDialog(null,"Is Self Propelled: ");
         
         
-        Engine e = new Engine(engineManufacturer,Integer.parseInt(horsePower),Integer.parseInt(engineCylinders)); 
+        Engine e = new Engine(engineManufacturer,Double.parseDouble(horsePower),Integer.parseInt(engineCylinders)); 
         GasPoweredMower t = new GasPoweredMower();
         
         t.setManufacturer(genericData[0]);
@@ -415,10 +427,13 @@ public class GUI extends javax.swing.JFrame {
         
         wareHouse.addMower(t);
         setData(gasMList,'G');
+        
+        saved = 0;
     }//GEN-LAST:event_addGasPoweredActionPerformed
 
     private void saveBtnOn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnOn4ActionPerformed
-        wareHouse.saveMowerData();
+         wareHouse.saveMowerData();
+         saved = 1;
     }//GEN-LAST:event_saveBtnOn4ActionPerformed
 
     private void addCommercialMowerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCommercialMowerActionPerformed
@@ -451,6 +466,8 @@ public class GUI extends javax.swing.JFrame {
         wareHouse.addMower(t);
         
         setData(commercialMList,'C');
+        
+        saved = 0;
     }//GEN-LAST:event_addCommercialMowerActionPerformed
 
     private void tabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedPaneStateChanged
@@ -526,7 +543,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_commercialMListValueChanged
 
     private void saveBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtn1ActionPerformed
-        wareHouse.saveMowerData();
+       wareHouse.saveMowerData();
+       saved = 1;
     }//GEN-LAST:event_saveBtn1ActionPerformed
 
     private void addLawnTractorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLawnTractorActionPerformed
@@ -553,6 +571,8 @@ public class GUI extends javax.swing.JFrame {
         wareHouse.addMower(t);
 
         setData(lawnMList,'L');
+        
+        saved = 0;
     }//GEN-LAST:event_addLawnTractorActionPerformed
 
     private void lawnMListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lawnMListValueChanged
@@ -570,6 +590,33 @@ public class GUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lawnMListValueChanged
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        
+        if(saved == 1) {
+            
+            System.out.println("Already saved");
+            System.exit(0);
+        
+        } else {
+        
+            int result = JOptionPane.showConfirmDialog(null,"Would you Like to Save: ",null,JOptionPane.OK_CANCEL_OPTION);
+            
+                if(result == JOptionPane.OK_OPTION) {
+                
+                    wareHouse.saveMowerData();
+                    saved = 1;
+                    System.out.println("Saved on exit");
+                    System.exit(0);
+                
+                } else {
+                
+                
+                    System.out.println("Not Saved on exit");
+                    System.exit(0);
+                }
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     private void setData(JList mowerList, char subClassType) {
     
