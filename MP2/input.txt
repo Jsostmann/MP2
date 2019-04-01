@@ -1,0 +1,68 @@
+Monstrous Mower Warehouse
+Briggs and Stratton
+2015
+AFXH1
+L
+Gravely Parts
+10.8
+2
+Model1
+45.5
+B&H Manufacturing
+2011
+AFXH2
+C
+Poulan Parts
+10.5
+2
+Model2
+5.8
+35.5
+false
+Bush Hog Manufacturing
+2013
+AFXH3
+G
+20.0
+16.0
+Homelite Parts
+10.5
+2
+true
+Ferris Industries
+2003
+AFXH4
+P
+18.0
+25.1
+4
+james
+2019
+AFXH7
+L
+james
+1000.0
+10
+Model 3
+40.0
+James mowers
+2019
+AFXH8
+G
+20.0
+50.3
+Homelite Parts
+100.6
+8
+false
+James Mowers
+2017
+AFXH9
+C
+Poulan Parts
+9.4
+3
+model3
+9.2
+66.7
+true
